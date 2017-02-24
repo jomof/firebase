@@ -5,16 +5,71 @@ abis=(arm64-v8a armeabi armeabi-v7a mips mips64 x86 x86_64)
 runtimes=(c++ gnustl stlport)
 libs=(admob analytics app auth database invites messaging remote_config storage)
 
+rm -rf .deploy
+rm -rf .staging
+mkdir .deploy
+mkdir .staging
+
+echo Zipping to .deploy/firebase-include.zip
+pushd firebase_cpp_sdk > null
+zip -r ../.deploy/firebase-include.zip include/ > null
+popd > null
+zipsha=$(shasum -a 256 .deploy/firebase-include.zip | awk '{print $1}')
+zipsize=$(stat --printf="%s" .deploy/firebase-include.zip)
 
 for lib in "${libs[@]}"
  do
+  manifest=".deploy/cdep-manifest-${lib}.yml"
+  printf "%s\r\n" "coordinate:" > ${manifest}
+  printf "%s\r\n" "  groupId: com.github.jomof" >> ${manifest}
+  printf "%s\r\n" "  artifactId: firebase/${lib}" >> ${manifest}
+  printf "%s\r\n" "  version: ${TRAVIS_TAG}" >> ${manifest} 
+  printf "%s\r\n" "android:" >> ${manifest} 
   for runtime in "${runtimes[@]}"
    do
+     ###
+     # ANDROID
+     ###
+     zip="firebase-android-${lib}-${runtime}.zip"
+
      for abi in "${abis[@]}"
       do
-       echo $lib $runtime $abi
+       libSource="firebase_cpp_sdk/libs/android/${abi}/${runtime}/lib${lib}.a"
+       libDest=".staging/${zip}/lib/${abi}"
+       echo Copying ${libSource} to ${libDest}
+       if [ -f ${libSource} ] 
+       then
+        mkdir -p "${libDest}"
+        cp ${libSource} ${libDest}/lib${lib}.a
+       else
+        echo ${libSource} did not exist. Aborting.
+        exit 100
+       fi   
       done 
+
+      echo Zipping to .deploy/${zip}
+      pushd .staging > null
+      zip -r ../.deploy/${zip} ${zip} > null
+      popd > null
+      shasum=$(shasum -a 256 .deploy/${zip} | awk '{print $1}')
+      archivesize=$(stat --printf="%s" .deploy/${zip})
+
+      printf "%s\r\n" "- lib: lib${lib}.a" >> ${manifest} 
+      printf "%s\r\n" "  archives:" >> ${manifest} 
+      printf "%s\r\n" "  - file: firebase-include.zip" >> ${manifest} 
+      printf "%s\r\n" "    shasum: ${zipsha}" >> ${manifest} 
+      printf "%s\r\n" "    size: ${zipsize}" >> ${manifest} 
+      printf "%s\r\n" "  - file: ${zip}" >> ${manifest} 
+      printf "%s\r\n" "    shasum: ${shasum}" >> ${manifest} 
+      printf "%s\r\n" "    size: ${archivesize}" >> ${manifest} 
+      printf "%s\r\n" "  runtime: ${runtime}" >> ${manifest} 
+      printf "%s\r\n" "  platform: 12" >> ${manifest} 
+      printf "%s\r\n" "  ndk: r10d" >> ${manifest} 
+      printf "%s\r\n" "  abis: [arm64-v8a, armeabi, armeabi-v7a, mips, mips64, x86, x86_64]" >> ${manifest} 
    done
 done
+
+# List the files to deploy
+find .deploy/ -type f
 
 
