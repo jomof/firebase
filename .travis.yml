@@ -1,12 +1,9 @@
-language: c++
 matrix:
   include:
   - os: linux
     script:
-    - wget http://www.sqlite.org/2017/sqlite-amalgamation-3160200.zip
-    - unzip sqlite-amalgamation-3160200.zip
-    - ./cmakeify --group-id com.github.jomof --artifact-id sqllite --target-version ${TRAVIS_TAG}
-deploy:
+    - ./create_firebase
+annoy:
   provider: releases
   api_key:
     secure: W0NiAxk1KuJw/jxwyUlPZ2ri6GXCP0O0zfXpWxkvuIRFU0OiMjgv1Xp3mPmfqbjJMxlqaL/ExS+ZopUWYZGOmvP9alvHjbZXW7xX1VMFmPW8iCKbBZNBtx4+9GyPyCxN8h2B1xoSiUd7TstRA7CToZej8E1W77vCB33CAWowOKER2IPrVD5MKWmxlN37CABhsHyfUmNzxgl2NE1mrHrv4NE7BDVaDE3IZxrtNDAmgSZ2YjhO/hBWxTqo91FTAsPz/26fCpJsQJ4tQl/kp4U0SP0FdzAUdNKaABU2CJri/nMoOFFbqmwg71QFWFu4bma5rjRy9me5noygEuIXi9lo+1Jrsym4sBbYHm8Fti79Z/Gnv79WJDvAXtQA2olm7OcWM3nDTlh2GmfWUhAbWfinDT5VLIhJKcAvONF55FwT7Ab407J0IgQfUrmUzlgPw5HZ0x61ZqAkKcPmKbeMCZnYHzEY/uiMZvMHKqGS8qTYyr1tpC+OCl3Wb9HIzJjEOK2WP++MmwIy+Zu0ofAPsIqLzc0QpSko8LCjB0++oJgeZy7GD+Mv/wkVVfCnhJvqqio7LZrwMi94ZRassRKQw+gkbYlnenvTYGobcUR2r9fzxh0ObK6bh+wDqn70ydXPLeeiIKCEyqFCv+AaeLk+hz/as3kPCFodn1AdfoIOq7oe7RI=
@@ -14,12 +11,41 @@ deploy:
   true: 
     tags: true
   file: 
-  - ./build/zips/cdep-manifest.yml
-  - build/zips/sqllite-android-cxx_static-platform-9.zip
-  - build/zips/sqllite-android-gnustl_static-platform-21.zip
-  - build/zips/sqllite-android-cxx_static-platform-21.zip
-  - build/zips/sqllite-android-gnustl_shared-platform-21.zip
-  - build/zips/sqllite-android-gnustl_shared-platform-9.zip
-  - build/zips/sqllite-android-cxx_shared-platform-21.zip
-  - build/zips/sqllite-android-gnustl_static-platform-9.zip
-  - build/zips/sqllite-android-cxx_shared-platform-9.zip
+  - .deploy/firebase-android-invites-c++.zip
+  - .deploy/firebase-android-remote_config-c++.zip
+  - .deploy/firebase-android-storage-gnustl.zip
+  - .deploy/firebase-android-storage-stlport.zip
+  - .deploy/firebase-android-app-stlport.zip
+  - .deploy/cdep-manifest-remote_config.yml
+  - .deploy/firebase-android-messaging-stlport.zip
+  - .deploy/firebase-android-messaging-gnustl.zip
+  - .deploy/cdep-manifest-messaging.yml
+  - .deploy/cdep-manifest-auth.yml
+  - .deploy/cdep-manifest-storage.yml
+  - .deploy/firebase-android-invites-stlport.zip
+  - .deploy/firebase-android-database-c++.zip
+  - .deploy/cdep-manifest-admob.yml
+  - .deploy/cdep-manifest-app.yml
+  - .deploy/firebase-android-auth-stlport.zip
+  - .deploy/cdep-manifest-database.yml
+  - .deploy/firebase-android-analytics-stlport.zip
+  - .deploy/firebase-android-admob-stlport.zip
+  - .deploy/firebase-android-auth-c++.zip
+  - .deploy/firebase-android-analytics-gnustl.zip
+  - .deploy/firebase-android-analytics-c++.zip
+  - .deploy/firebase-android-database-gnustl.zip
+  - .deploy/firebase-android-app-gnustl.zip
+  - .deploy/firebase-android-storage-c++.zip
+  - .deploy/cdep-manifest-analytics.yml
+  - .deploy/cdep-manifest-invites.yml
+  - .deploy/firebase-android-admob-gnustl.zip
+  - .deploy/firebase-android-app-c++.zip
+  - .deploy/firebase-android-remote_config-stlport.zip
+  - .deploy/firebase-android-auth-gnustl.zip
+  - .deploy/firebase-android-remote_config-gnustl.zip
+  - .deploy/firebase-android-admob-c++.zip
+  - .deploy/firebase-android-invites-gnustl.zip
+  - .deploy/firebase-android-database-stlport.zip
+  - .deploy/firebase-include.zip
+  - .deploy/firebase-android-messaging-c++.zip
+
