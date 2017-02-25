@@ -34,6 +34,7 @@ for lib in "${libs[@]}"
      # ANDROID
      ###
      zip="firebase-android-${lib}-${runtime}.zip"
+     zip=${zip/++/pp}
 
      for abi in "${abis[@]}"
       do
