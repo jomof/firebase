@@ -2,50 +2,50 @@ matrix:
   include:
   - os: linux
     script:
-    - ./create_firebase
-annoy:
+    - "./create_firebase"
+deploy:
   provider: releases
   api_key:
-    secure: W0NiAxk1KuJw/jxwyUlPZ2ri6GXCP0O0zfXpWxkvuIRFU0OiMjgv1Xp3mPmfqbjJMxlqaL/ExS+ZopUWYZGOmvP9alvHjbZXW7xX1VMFmPW8iCKbBZNBtx4+9GyPyCxN8h2B1xoSiUd7TstRA7CToZej8E1W77vCB33CAWowOKER2IPrVD5MKWmxlN37CABhsHyfUmNzxgl2NE1mrHrv4NE7BDVaDE3IZxrtNDAmgSZ2YjhO/hBWxTqo91FTAsPz/26fCpJsQJ4tQl/kp4U0SP0FdzAUdNKaABU2CJri/nMoOFFbqmwg71QFWFu4bma5rjRy9me5noygEuIXi9lo+1Jrsym4sBbYHm8Fti79Z/Gnv79WJDvAXtQA2olm7OcWM3nDTlh2GmfWUhAbWfinDT5VLIhJKcAvONF55FwT7Ab407J0IgQfUrmUzlgPw5HZ0x61ZqAkKcPmKbeMCZnYHzEY/uiMZvMHKqGS8qTYyr1tpC+OCl3Wb9HIzJjEOK2WP++MmwIy+Zu0ofAPsIqLzc0QpSko8LCjB0++oJgeZy7GD+Mv/wkVVfCnhJvqqio7LZrwMi94ZRassRKQw+gkbYlnenvTYGobcUR2r9fzxh0ObK6bh+wDqn70ydXPLeeiIKCEyqFCv+AaeLk+hz/as3kPCFodn1AdfoIOq7oe7RI=
+    secure: q2ip/jI1l3A7e2y0s6X97odsZdc96vx6CFSPcWKKrr4UlIK5nS/PhML+hGn/QgI4aqF5Hh7IJIHUl899N0LdvHe1nm5M/ZwXGBx2/82AQeSPaMvaKnPaPg2x9tD6yZulJTwoCX8aEoDgxe0mMzel0NQrAe1bREBkxZxpK45gAWxOBRjtIIvGsbqcmK2bIOAxHjTkRCmVTcEvejA/v87mWsyQ1qFqwefaSpJ6H9+Q09z5U2+WJyhUi//+wxaV+inDr13mTLdYRZWPKnuWaq2bnIF1lRgEI2eGov8iirxdDMPznALXnNKyxyYOAO20X9izvAAKCv/ukr/+xcXiJhBHbk90djTUkeQRSkTrHXjtQt448Lh0MFH/j9GyPXPtSSIiCxBSOpBNUCyvhoUwZp04Kt7PmK7GMFZmyZylBorW3uD9vL1gmmogTkdAU5uNELOeJKCwkmRA4Rh9586SsS03bIJMhdNVCY7FBwytk3Ddhf7xi35MMMVHFvUwww53Q8HVH8IQkGs0XV66l+HZmZoJ517w5DwQYWpC63GrWC0cYRlntoORIoTylyGr4XhwqMIJNH545/r3W7urkWhlXhOGaReY0JfxVZz8I0eIxRBAzSykLkhVqB8iSTtocLNQ6F/FSewvSMFn734qoqY+CRBvQ14tLWhSIK0d13ExLEYHXRY=
   skip_cleanup: true
-  true: 
+  on:
     tags: true
-  file: 
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/cdep-manifest-admob.yml
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/cdep-manifest-analytics.yml
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/cdep-manifest-app.yml
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/cdep-manifest-auth.yml
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/cdep-manifest-database.yml
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/cdep-manifest-invites.yml
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/cdep-manifest-messaging.yml
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/cdep-manifest-remote_config.yml
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/cdep-manifest-storage.yml
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-admob-c++.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-admob-gnustl.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-admob-stlport.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-analytics-c++.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-analytics-gnustl.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-analytics-stlport.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-app-c++.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-app-gnustl.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-app-stlport.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-auth-c++.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-auth-gnustl.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-auth-stlport.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-database-c++.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-database-gnustl.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-database-stlport.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-invites-c++.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-invites-gnustl.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-invites-stlport.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-messaging-c++.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-messaging-gnustl.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-messaging-stlport.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-remote_config-c++.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-remote_config-gnustl.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-remote_config-stlport.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-storage-c++.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-storage-gnustl.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-storage-stlport.zip
-  - .deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-include.zip
+  file:
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/cdep-manifest-admob.yml"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/cdep-manifest-analytics.yml"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/cdep-manifest-app.yml"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/cdep-manifest-auth.yml"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/cdep-manifest-database.yml"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/cdep-manifest-invites.yml"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/cdep-manifest-messaging.yml"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/cdep-manifest-remote_config.yml"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/cdep-manifest-storage.yml"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-admob-c++.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-admob-gnustl.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-admob-stlport.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-analytics-c++.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-analytics-gnustl.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-analytics-stlport.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-app-c++.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-app-gnustl.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-app-stlport.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-auth-c++.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-auth-gnustl.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-auth-stlport.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-database-c++.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-database-gnustl.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-database-stlport.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-invites-c++.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-invites-gnustl.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-invites-stlport.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-messaging-c++.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-messaging-gnustl.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-messaging-stlport.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-remote_config-c++.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-remote_config-gnustl.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-remote_config-stlport.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-storage-c++.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-storage-gnustl.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-android-storage-stlport.zip"
+  - ".deploy/com.jomofisher/firebase/${TRAVIS_TAG}/firebase-include.zip"
 
