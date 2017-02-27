@@ -2,7 +2,7 @@ wget https://dl.google.com/firebase/sdk/cpp/firebase_cpp_sdk_2.1.3.zip
 unzip firebase_cpp_sdk_2.1.3.zip > null
 
 groupId=com.github.jomof
-version=${TRAVIS_TAG}
+version=${TRAVIS_TAG:-0.0.0}
 abis=(arm64-v8a armeabi armeabi-v7a mips mips64 x86 x86_64)
 runtimes=(c++ gnustl stlport)
 libs=(admob analytics app auth database invites messaging remote_config storage)
@@ -17,8 +17,8 @@ echo Zipping to ${deploy}/firebase-include.zip
 pushd firebase_cpp_sdk > null
 zip -r ../${deploy}/firebase-include.zip include/ > null
 popd > null
-zipsha=$(shasum -a 256 ${deploy}/firebase-include.zip | awk '{print $1}')
-zipsize=$(stat --printf="%s" ${deploy}/firebase-include.zip)
+headerzipsha=$(shasum -a 256 ${deploy}/firebase-include.zip | awk '{print $1}')
+headerzipsize=$(stat --printf="%s" ${deploy}/firebase-include.zip)
 
 for lib in "${libs[@]}"
  do
@@ -27,6 +27,10 @@ for lib in "${libs[@]}"
   printf "%s\r\n" "  groupId: ${groupId}" >> ${manifest}
   printf "%s\r\n" "  artifactId: firebase/${lib}" >> ${manifest}
   printf "%s\r\n" "  version: ${version}" >> ${manifest} 
+  printf "%s\r\n" "archive:" >> ${manifest} 
+  printf "%s\r\n" "  file: firebase-include.zip" >> ${manifest} 
+  printf "%s\r\n" "  sha256: ${headerzipsha}" >> ${manifest} 
+  printf "%s\r\n" "  size: ${headerzipsize}" >> ${manifest} 
   printf "%s\r\n" "android:" >> ${manifest} 
   for runtime in "${runtimes[@]}"
    do
@@ -57,19 +61,15 @@ for lib in "${libs[@]}"
       popd > null
       shasum=$(shasum -a 256 ${deploy}/${zip} | awk '{print $1}')
       archivesize=$(stat --printf="%s" ${deploy}/${zip})
-
-      printf "%s\r\n" "- lib: lib${lib}.a" >> ${manifest} 
       printf "%s\r\n" "  archives:" >> ${manifest} 
-      printf "%s\r\n" "  - file: firebase-include.zip" >> ${manifest} 
-      printf "%s\r\n" "    sha256: ${zipsha}" >> ${manifest} 
-      printf "%s\r\n" "    size: ${zipsize}" >> ${manifest} 
       printf "%s\r\n" "  - file: ${zip}" >> ${manifest} 
+      printf "%s\r\n" "    lib: lib${lib}.a" >> ${manifest} 
       printf "%s\r\n" "    sha256: ${shasum}" >> ${manifest} 
       printf "%s\r\n" "    size: ${archivesize}" >> ${manifest} 
-      printf "%s\r\n" "  runtime: ${runtime}" >> ${manifest} 
-      printf "%s\r\n" "  platform: 12" >> ${manifest} 
-      printf "%s\r\n" "  ndk: r10d" >> ${manifest} 
-      printf "%s\r\n" "  abis: [arm64-v8a, armeabi, armeabi-v7a, mips, mips64, x86, x86_64]" >> ${manifest} 
+      printf "%s\r\n" "    runtime: ${runtime}" >> ${manifest} 
+      printf "%s\r\n" "    platform: 12" >> ${manifest} 
+      printf "%s\r\n" "    ndk: r10d" >> ${manifest} 
+      printf "%s\r\n" "    abis: [arm64-v8a, armeabi, armeabi-v7a, mips, mips64, x86, x86_64]" >> ${manifest} 
    done
 done
 
