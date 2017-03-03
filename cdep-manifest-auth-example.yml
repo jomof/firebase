@@ -5,5 +5,5 @@ example: |
   void test() {
     ::firebase::App * app = ::firebase::App::Create(
       ::firebase::AppOptions(), NULL /* jni_env */, NULL /* activity */);
-    ::firebase::auth::Initialize(*app);
+    ::firebase::auth::Auth* auth = ::firebase::auth::Auth::GetAuth(app);
   }
