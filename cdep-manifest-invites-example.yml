@@ -1,0 +1,9 @@
+example: |
+  #include "firebase/app.h"
+  #include "firebase/invites.h"
+  
+  void test() {
+    ::firebase::App * app = ::firebase::App::Create(
+      ::firebase::AppOptions(), NULL /* jni_env */, NULL /* activity */);
+    ::firebase::invites::Initialize(*app);
+  }
