@@ -7,6 +7,6 @@ example: |
   void test() {
     const char* kAdMobAppID = "ca-app-pub-XXXXXXXXXXXXXXXX~NNNNNNNNNN";
     firebase::admob::Initialize(
-      ::firebase::App::Create(::firebase::AppOptions(), NULL /* jni_env */ , NULL /* activity */ ), 
+      *::firebase::App::Create(::firebase::AppOptions(), NULL /* jni_env */ , NULL /* activity */ ), 
       kAdMobAppID);
   }
