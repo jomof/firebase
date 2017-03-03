@@ -3,6 +3,7 @@ matrix:
   - os: linux
     script:
     - "./create_firebase"
+    - ./cdep -wf build-examples
 deploy:
   provider: releases
   api_key:
