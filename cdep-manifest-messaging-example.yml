@@ -1,0 +1,10 @@
+example: |
+  #include "firebase/app.h"
+  #include "firebase/messaging.h"
+  
+  void test() {
+    ::firebase::messaging::Messaging *messaging = ::firebase::messaging::Messaging::Initialize(
+      ::firebase::App::Create(::firebase::AppOptions(), NULL /* jni_env */ , NULL /* activity */ ),
+      NULL /* listener */
+    );
+  }
