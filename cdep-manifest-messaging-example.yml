@@ -3,8 +3,8 @@ example: |
   #include "firebase/messaging.h"
   
   void test() {
-    ::firebase::messaging::Initialize(
-      ::firebase::App::Create(::firebase::AppOptions(), NULL /* jni_env */ , NULL /* activity */ ),
-      NULL /* listener */
+    ::firebase::App app = ::firebase::App::Create(
+      ::firebase::AppOptions(), NULL /* jni_env */ \, NULL /* activity */);
+    ::firebase::messaging::Initialize(app, NULL /* listener */
     );
   }
