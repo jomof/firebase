@@ -5,5 +5,5 @@ example: |
   void test() {
     ::firebase::App * app = ::firebase::App::Create(
       ::firebase::AppOptions(), NULL /* jni_env */, NULL /* activity */);
-    ::firebase::messaging::Initialize(*app);
+    ::firebase::messaging::Initialize(*app, NULL /* listener */);
   }
