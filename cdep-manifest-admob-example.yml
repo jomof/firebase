@@ -1,9 +1,12 @@
 example: |
-  #include "firebase/app.h"
   #include "firebase/admob.h"
+  #include "firebase/admob/types.h"
+  #include "firebase/app.h"
+  #include "firebase/future.h"
   
   void test() {
-    ::firebase::admob::AdMob *admob = ::firebase::admob::AdMob::GetInstance(
-      ::firebase::App::Create(::firebase::AppOptions(), NULL /* jni_env */ , NULL /* activity */ )
-    );
+    const char* kAdMobAppID = "ca-app-pub-XXXXXXXXXXXXXXXX~NNNNNNNNNN";
+    firebase::admob::Initialize(
+      ::firebase::App::Create(::firebase::AppOptions(), NULL /* jni_env */ , NULL /* activity */ ), 
+      kAdMobAppID);
   }
