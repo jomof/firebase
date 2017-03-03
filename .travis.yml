@@ -4,6 +4,8 @@ matrix:
     script:
     - "./create_firebase"
     - ./cdep -wf build-examples
+    - ./cmakeify -wf build-examples/.cdep/examples/cmake
+
 deploy:
   provider: releases
   api_key:
