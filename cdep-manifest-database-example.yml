@@ -1,0 +1,9 @@
+example: |
+  #include "firebase/app.h"
+  #include "firebase/database.h"
+  
+  void test() {
+    ::firebase::database::Database *database = ::firebase::database::Database::GetInstance(
+      ::firebase::App::Create(::firebase::AppOptions(), NULL /* jni_env */ , NULL /* activity */ )
+    );
+  }
