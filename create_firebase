@@ -75,6 +75,7 @@ for lib in "${libs[@]}"
       shasum=$(shasum -a 256 ${deploy}/${zip} | awk '{print $1}')
       archivesize=$(stat --printf="%s" ${deploy}/${zip})
       printf "%s\r\n" "  - file: ${zip}" >> ${manifest} 
+      printf "%s\r\n" "    include: " >> ${manifest} 
       printf "%s\r\n" "    lib: lib${lib}.a" >> ${manifest} 
       printf "%s\r\n" "    sha256: ${shasum}" >> ${manifest} 
       printf "%s\r\n" "    size: ${archivesize}" >> ${manifest} 
