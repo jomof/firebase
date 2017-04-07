@@ -102,6 +102,8 @@ for lib in "${libs[@]}"
     printf "%s\r\n" "- compile: ${manifest}" >> build-examples/cdep.yml
 done
 
+cat ${manifest}
+
 # List the files to deploy
 find ${deploy}/ -type f | sort
 
