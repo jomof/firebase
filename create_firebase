@@ -41,6 +41,7 @@ for lib in "${libs[@]}"
     printf "%s\r\n" "  file: firebase-include.zip" >> ${manifest} 
     printf "%s\r\n" "  sha256: ${headerzipsha}" >> ${manifest} 
     printf "%s\r\n" "  size: ${headerzipsize}" >> ${manifest} 
+    printf "%s\r\n" "  include: include" >> ${manifest} 
   fi
   printf "%s\r\n" "android:" >> ${manifest} 
   printf "%s\r\n" "  archives:" >> ${manifest} 
