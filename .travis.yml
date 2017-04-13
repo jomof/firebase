@@ -8,5 +8,5 @@ matrix:
     - ./cdep
     - ./cmakeify -wf .cdep/examples/cmake --artifact-id com.github --group-id test-firebase --target-version 0.0.0
     - git clone https://github.com/jomof/tools
-    - tools/github_release_folder jomof stb .cdep/fullfill/output/layout
+    - tools/github_release_folder jomof firebase .cdep/fullfill/output/layout
 
