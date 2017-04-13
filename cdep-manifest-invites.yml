@@ -1,0 +1,38 @@
+coordinate:
+  groupId: com.github.jomof
+  artifactId: firebase/invites
+  version: ${version}
+dependencies:
+  - compile: ${layout}/cdep-manifest-app.yml
+android:
+  archives:
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/c++/libinvites.a
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/gnustl/libinvites.a
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/stlport/libinvites.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/c++/libinvites.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/gnustl/libinvites.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/stlport/libinvites.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/c++/libinvites.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/gnustl/libinvites.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/stlport/libinvites.a
+  - file: firebase_cpp_sdk/libs/android/mips64/c++/libinvites.a
+  - file: firebase_cpp_sdk/libs/android/mips64/gnustl/libinvites.a
+  - file: firebase_cpp_sdk/libs/android/mips64/stlport/libinvites.a
+  - file: firebase_cpp_sdk/libs/android/mips/c++/libinvites.a
+  - file: firebase_cpp_sdk/libs/android/mips/gnustl/libinvites.a
+  - file: firebase_cpp_sdk/libs/android/mips/stlport/libinvites.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/c++/libinvites.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/gnustl/libinvites.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/stlport/libinvites.a
+  - file: firebase_cpp_sdk/libs/android/x86/c++/libinvites.a
+  - file: firebase_cpp_sdk/libs/android/x86/gnustl/libinvites.a
+  - file: firebase_cpp_sdk/libs/android/x86/stlport/libinvites.a
+example: |
+  #include "firebase/app.h"
+  #include "firebase/invites.h"
+  
+  void test() {
+    ::firebase::App * app = ::firebase::App::Create(
+      ::firebase::AppOptions(), NULL /* jni_env */, NULL /* activity */);
+    ::firebase::invites::Initialize(*app);
+  }

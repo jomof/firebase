@@ -1,0 +1,41 @@
+coordinate:
+  groupId: com.github.jomof
+  artifactId: firebase/admob
+  version: ${version}
+dependencies:
+  - compile: ${layout}/cdep-manifest-app.yml
+android:
+  archives:
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/c++/libadmob.a
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/gnustl/libadmob.a
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/stlport/libadmob.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/c++/libadmob.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/gnustl/libadmob.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/stlport/libadmob.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/c++/libadmob.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/gnustl/libadmob.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/stlport/libadmob.a
+  - file: firebase_cpp_sdk/libs/android/mips64/c++/libadmob.a
+  - file: firebase_cpp_sdk/libs/android/mips64/gnustl/libadmob.a
+  - file: firebase_cpp_sdk/libs/android/mips64/stlport/libadmob.a
+  - file: firebase_cpp_sdk/libs/android/mips/c++/libadmob.a
+  - file: firebase_cpp_sdk/libs/android/mips/gnustl/libadmob.a
+  - file: firebase_cpp_sdk/libs/android/mips/stlport/libadmob.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/c++/libadmob.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/gnustl/libadmob.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/stlport/libadmob.a
+  - file: firebase_cpp_sdk/libs/android/x86/c++/libadmob.a
+  - file: firebase_cpp_sdk/libs/android/x86/gnustl/libadmob.a
+  - file: firebase_cpp_sdk/libs/android/x86/stlport/libadmob.a
+example: |
+  #include "firebase/admob.h"
+  #include "firebase/admob/types.h"
+  #include "firebase/app.h"
+  #include "firebase/future.h"
+  
+  void test() {
+    const char* kAdMobAppID = "ca-app-pub-XXXXXXXXXXXXXXXX~NNNNNNNNNN";
+    firebase::admob::Initialize(
+      *::firebase::App::Create(::firebase::AppOptions(), NULL /* jni_env */ , NULL /* activity */ ), 
+      kAdMobAppID);
+  }

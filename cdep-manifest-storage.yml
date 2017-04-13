@@ -1,0 +1,38 @@
+coordinate:
+  groupId: com.github.jomof
+  artifactId: firebase/storage
+  version: ${version}
+dependencies:
+  - compile: ${layout}/cdep-manifest-app.yml
+android:
+  archives:
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/c++/libstorage.a
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/gnustl/libstorage.a
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/stlport/libstorage.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/c++/libstorage.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/gnustl/libstorage.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/stlport/libstorage.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/c++/libstorage.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/gnustl/libstorage.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/stlport/libstorage.a
+  - file: firebase_cpp_sdk/libs/android/mips64/c++/libstorage.a
+  - file: firebase_cpp_sdk/libs/android/mips64/gnustl/libstorage.a
+  - file: firebase_cpp_sdk/libs/android/mips64/stlport/libstorage.a
+  - file: firebase_cpp_sdk/libs/android/mips/c++/libstorage.a
+  - file: firebase_cpp_sdk/libs/android/mips/gnustl/libstorage.a
+  - file: firebase_cpp_sdk/libs/android/mips/stlport/libstorage.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/c++/libstorage.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/gnustl/libstorage.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/stlport/libstorage.a
+  - file: firebase_cpp_sdk/libs/android/x86/c++/libstorage.a
+  - file: firebase_cpp_sdk/libs/android/x86/gnustl/libstorage.a
+  - file: firebase_cpp_sdk/libs/android/x86/stlport/libstorage.a
+example: |
+  #include "firebase/app.h"
+  #include "firebase/storage.h"
+  
+  void test() {
+    ::firebase::storage::Storage *storage = ::firebase::storage::Storage::GetInstance(
+      ::firebase::App::Create(::firebase::AppOptions(), NULL /* jni_env */ , NULL /* activity */ )
+    );
+  }

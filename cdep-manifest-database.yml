@@ -1,0 +1,38 @@
+coordinate:
+  groupId: com.github.jomof
+  artifactId: firebase/database
+  version: ${version}
+dependencies:
+  - compile: ${layout}/cdep-manifest-app.yml
+android:
+  archives:
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/c++/libdatabase.a
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/gnustl/libdatabase.a
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/stlport/libdatabase.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/c++/libdatabase.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/gnustl/libdatabase.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/stlport/libdatabase.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/c++/libdatabase.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/gnustl/libdatabase.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/stlport/libdatabase.a
+  - file: firebase_cpp_sdk/libs/android/mips64/c++/libdatabase.a
+  - file: firebase_cpp_sdk/libs/android/mips64/gnustl/libdatabase.a
+  - file: firebase_cpp_sdk/libs/android/mips64/stlport/libdatabase.a
+  - file: firebase_cpp_sdk/libs/android/mips/c++/libdatabase.a
+  - file: firebase_cpp_sdk/libs/android/mips/gnustl/libdatabase.a
+  - file: firebase_cpp_sdk/libs/android/mips/stlport/libdatabase.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/c++/libdatabase.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/gnustl/libdatabase.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/stlport/libdatabase.a
+  - file: firebase_cpp_sdk/libs/android/x86/c++/libdatabase.a
+  - file: firebase_cpp_sdk/libs/android/x86/gnustl/libdatabase.a
+  - file: firebase_cpp_sdk/libs/android/x86/stlport/libdatabase.a
+example: |
+  #include "firebase/app.h"
+  #include "firebase/database.h"
+  
+  void test() {
+    ::firebase::database::Database *database = ::firebase::database::Database::GetInstance(
+      ::firebase::App::Create(::firebase::AppOptions(), NULL /* jni_env */ , NULL /* activity */ )
+    );
+  }

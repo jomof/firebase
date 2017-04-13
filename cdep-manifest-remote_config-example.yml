@@ -1,9 +1,0 @@
-example: |
-  #include "firebase/app.h"
-  #include "firebase/remote_config.h"
-  
-  void test() {
-    ::firebase::App * app = ::firebase::App::Create(
-      ::firebase::AppOptions(), NULL /* jni_env */, NULL /* activity */);
-    ::firebase::remote_config::Initialize(*app);
-  }

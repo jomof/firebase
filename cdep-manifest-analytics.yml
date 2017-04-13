@@ -1,0 +1,38 @@
+coordinate:
+  groupId: com.github.jomof
+  artifactId: firebase/analytics
+  version: ${version}
+dependencies:
+  - compile: ${layout}/cdep-manifest-app.yml
+android:
+  archives:
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/c++/libanalytics.a
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/gnustl/libanalytics.a
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/stlport/libanalytics.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/c++/libanalytics.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/gnustl/libanalytics.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/stlport/libanalytics.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/c++/libanalytics.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/gnustl/libanalytics.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/stlport/libanalytics.a
+  - file: firebase_cpp_sdk/libs/android/mips64/c++/libanalytics.a
+  - file: firebase_cpp_sdk/libs/android/mips64/gnustl/libanalytics.a
+  - file: firebase_cpp_sdk/libs/android/mips64/stlport/libanalytics.a
+  - file: firebase_cpp_sdk/libs/android/mips/c++/libanalytics.a
+  - file: firebase_cpp_sdk/libs/android/mips/gnustl/libanalytics.a
+  - file: firebase_cpp_sdk/libs/android/mips/stlport/libanalytics.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/c++/libanalytics.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/gnustl/libanalytics.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/stlport/libanalytics.a
+  - file: firebase_cpp_sdk/libs/android/x86/c++/libanalytics.a
+  - file: firebase_cpp_sdk/libs/android/x86/gnustl/libanalytics.a
+  - file: firebase_cpp_sdk/libs/android/x86/stlport/libanalytics.a
+example: |
+  #include "firebase/app.h"
+  #include "firebase/analytics.h"
+  
+  void test() {
+    ::firebase::App * app = ::firebase::App::Create(
+      ::firebase::AppOptions(), NULL /* jni_env */, NULL /* activity */);
+    ::firebase::analytics::Initialize(*app);
+  }

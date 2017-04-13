@@ -1,9 +1,0 @@
-example: |
-  #include "firebase/app.h"
-  #include "firebase/analytics.h"
-  
-  void test() {
-    ::firebase::App * app = ::firebase::App::Create(
-      ::firebase::AppOptions(), NULL /* jni_env */, NULL /* activity */);
-    ::firebase::analytics::Initialize(*app);
-  }

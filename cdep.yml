@@ -1,5 +1,12 @@
-builders: [cmake]
+builders: [cmake, cmakeExamples]
 
 dependencies:
-# Uncomment next line to get header-only boost
-#- compile: com.github.jomof:boost:1.0.63-rev10
+- compile: .cdep/fullfill/output/layout/cdep-manifest-app.yml
+- compile: .cdep/fullfill/output/layout/cdep-manifest-admob.yml
+- compile: .cdep/fullfill/output/layout/cdep-manifest-analytics.yml
+- compile: .cdep/fullfill/output/layout/cdep-manifest-auth.yml
+- compile: .cdep/fullfill/output/layout/cdep-manifest-database.yml
+- compile: .cdep/fullfill/output/layout/cdep-manifest-invites.yml
+- compile: .cdep/fullfill/output/layout/cdep-manifest-messaging.yml
+- compile: .cdep/fullfill/output/layout/cdep-manifest-remote_config.yml
+- compile: .cdep/fullfill/output/layout/cdep-manifest-storage.yml

@@ -1,5 +1,0 @@
-example: |
-  #include "firebase/app.h"
-  void test() {
-    ::firebase::App::Create(::firebase::AppOptions(), NULL /* jni_env */ , NULL /* activity */ );
-  }

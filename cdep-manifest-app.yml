@@ -1,0 +1,38 @@
+coordinate:
+  groupId: com.github.jomof
+  artifactId: firebase/app
+  version: ${version}
+interfaces:
+  headers:
+    file: ${source}/include/...
+    include: include
+android:
+  archives:
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/c++/libapp.a
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/gnustl/libapp.a
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/stlport/libapp.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/c++/libapp.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/gnustl/libapp.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/stlport/libapp.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/c++/libapp.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/gnustl/libapp.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/stlport/libapp.a
+  - file: firebase_cpp_sdk/libs/android/mips64/c++/libapp.a
+  - file: firebase_cpp_sdk/libs/android/mips64/gnustl/libapp.a
+  - file: firebase_cpp_sdk/libs/android/mips64/stlport/libapp.a
+  - file: firebase_cpp_sdk/libs/android/mips/c++/libapp.a
+  - file: firebase_cpp_sdk/libs/android/mips/gnustl/libapp.a
+  - file: firebase_cpp_sdk/libs/android/mips/stlport/libapp.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/c++/libapp.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/gnustl/libapp.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/stlport/libapp.a
+  - file: firebase_cpp_sdk/libs/android/x86/c++/libapp.a
+  - file: firebase_cpp_sdk/libs/android/x86/gnustl/libapp.a
+  - file: firebase_cpp_sdk/libs/android/x86/stlport/libapp.a
+example: |
+  #include "firebase/app.h"
+  void test() {
+    ::firebase::App::Create(::firebase::AppOptions(), NULL /* jni_env */ , NULL /* activity */ );
+  }
+
+

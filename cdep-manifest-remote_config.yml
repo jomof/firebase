@@ -1,0 +1,38 @@
+coordinate:
+  groupId: com.github.jomof
+  artifactId: firebase/remote_config
+  version: ${version}
+dependencies:
+  - compile: ${layout}/cdep-manifest-app.yml
+android:
+  archives:
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/c++/libremote_config.a
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/gnustl/libremote_config.a
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/stlport/libremote_config.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/c++/libremote_config.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/gnustl/libremote_config.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/stlport/libremote_config.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/c++/libremote_config.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/gnustl/libremote_config.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/stlport/libremote_config.a
+  - file: firebase_cpp_sdk/libs/android/mips64/c++/libremote_config.a
+  - file: firebase_cpp_sdk/libs/android/mips64/gnustl/libremote_config.a
+  - file: firebase_cpp_sdk/libs/android/mips64/stlport/libremote_config.a
+  - file: firebase_cpp_sdk/libs/android/mips/c++/libremote_config.a
+  - file: firebase_cpp_sdk/libs/android/mips/gnustl/libremote_config.a
+  - file: firebase_cpp_sdk/libs/android/mips/stlport/libremote_config.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/c++/libremote_config.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/gnustl/libremote_config.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/stlport/libremote_config.a
+  - file: firebase_cpp_sdk/libs/android/x86/c++/libremote_config.a
+  - file: firebase_cpp_sdk/libs/android/x86/gnustl/libremote_config.a
+  - file: firebase_cpp_sdk/libs/android/x86/stlport/libremote_config.a
+example: |
+  #include "firebase/app.h"
+  #include "firebase/remote_config.h"
+  
+  void test() {
+    ::firebase::App * app = ::firebase::App::Create(
+      ::firebase::AppOptions(), NULL /* jni_env */, NULL /* activity */);
+    ::firebase::remote_config::Initialize(*app);
+  }

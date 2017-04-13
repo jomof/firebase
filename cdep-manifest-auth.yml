@@ -1,0 +1,38 @@
+coordinate:
+  groupId: com.github.jomof
+  artifactId: firebase/auth
+  version: ${version}
+dependencies:
+  - compile: ${layout}/cdep-manifest-app.yml
+android:
+  archives:
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/c++/libauth.a
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/gnustl/libauth.a
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/stlport/libauth.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/c++/libauth.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/gnustl/libauth.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/stlport/libauth.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/c++/libauth.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/gnustl/libauth.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/stlport/libauth.a
+  - file: firebase_cpp_sdk/libs/android/mips64/c++/libauth.a
+  - file: firebase_cpp_sdk/libs/android/mips64/gnustl/libauth.a
+  - file: firebase_cpp_sdk/libs/android/mips64/stlport/libauth.a
+  - file: firebase_cpp_sdk/libs/android/mips/c++/libauth.a
+  - file: firebase_cpp_sdk/libs/android/mips/gnustl/libauth.a
+  - file: firebase_cpp_sdk/libs/android/mips/stlport/libauth.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/c++/libauth.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/gnustl/libauth.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/stlport/libauth.a
+  - file: firebase_cpp_sdk/libs/android/x86/c++/libauth.a
+  - file: firebase_cpp_sdk/libs/android/x86/gnustl/libauth.a
+  - file: firebase_cpp_sdk/libs/android/x86/stlport/libauth.a
+example: |
+  #include "firebase/app.h"
+  #include "firebase/auth.h"
+  
+  void test() {
+    ::firebase::App * app = ::firebase::App::Create(
+      ::firebase::AppOptions(), NULL /* jni_env */, NULL /* activity */);
+    ::firebase::auth::Auth* auth = ::firebase::auth::Auth::GetAuth(app);
+  }

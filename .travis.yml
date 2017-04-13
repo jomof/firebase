@@ -2,53 +2,11 @@ matrix:
   include:
   - os: linux
     script:
-    - "./create_firebase"
-    - ./cdep -wf build-examples
-    - ./cmakeify -wf build-examples/.cdep/examples/cmake
-    - cat .cmakeify/build.sh
-deploy:
-  provider: releases
-  api_key:
-    secure: q2ip/jI1l3A7e2y0s6X97odsZdc96vx6CFSPcWKKrr4UlIK5nS/PhML+hGn/QgI4aqF5Hh7IJIHUl899N0LdvHe1nm5M/ZwXGBx2/82AQeSPaMvaKnPaPg2x9tD6yZulJTwoCX8aEoDgxe0mMzel0NQrAe1bREBkxZxpK45gAWxOBRjtIIvGsbqcmK2bIOAxHjTkRCmVTcEvejA/v87mWsyQ1qFqwefaSpJ6H9+Q09z5U2+WJyhUi//+wxaV+inDr13mTLdYRZWPKnuWaq2bnIF1lRgEI2eGov8iirxdDMPznALXnNKyxyYOAO20X9izvAAKCv/ukr/+xcXiJhBHbk90djTUkeQRSkTrHXjtQt448Lh0MFH/j9GyPXPtSSIiCxBSOpBNUCyvhoUwZp04Kt7PmK7GMFZmyZylBorW3uD9vL1gmmogTkdAU5uNELOeJKCwkmRA4Rh9586SsS03bIJMhdNVCY7FBwytk3Ddhf7xi35MMMVHFvUwww53Q8HVH8IQkGs0XV66l+HZmZoJ517w5DwQYWpC63GrWC0cYRlntoORIoTylyGr4XhwqMIJNH545/r3W7urkWhlXhOGaReY0JfxVZz8I0eIxRBAzSykLkhVqB8iSTtocLNQ6F/FSewvSMFn734qoqY+CRBvQ14tLWhSIK0d13ExLEYHXRY=
-  skip_cleanup: true
-  on:
-    tags: true
-  file:
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/cdep-manifest-admob.yml"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/cdep-manifest-analytics.yml"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/cdep-manifest-app.yml"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/cdep-manifest-auth.yml"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/cdep-manifest-database.yml"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/cdep-manifest-invites.yml"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/cdep-manifest-messaging.yml"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/cdep-manifest-remote_config.yml"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/cdep-manifest-storage.yml"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-admob-cpp.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-admob-gnustl.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-admob-stlport.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-analytics-cpp.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-analytics-gnustl.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-analytics-stlport.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-app-cpp.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-app-gnustl.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-app-stlport.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-auth-cpp.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-auth-gnustl.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-auth-stlport.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-database-cpp.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-database-gnustl.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-database-stlport.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-invites-cpp.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-invites-gnustl.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-invites-stlport.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-messaging-cpp.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-messaging-gnustl.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-messaging-stlport.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-remote_config-cpp.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-remote_config-gnustl.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-remote_config-stlport.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-storage-cpp.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-storage-gnustl.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-android-storage-stlport.zip"
-  - ".deploy/com.github.jomof/firebase/${TRAVIS_TAG}/firebase-include.zip"
+    - wget https://dl.google.com/firebase/sdk/cpp/firebase_cpp_sdk_2.1.3.zip
+    - unzip firebase_cpp_sdk_2.1.3.zip
+    - ./cdep fullfill firebase_cpp_sdk/ ${TRAVIS_TAG:-0.0.0} cdep-manifest-app.yml cdep-manifest-admob.yml cdep-manifest-analytics.yml cdep-manifest-auth.yml cdep-manifest-database.yml cdep-manifest-invites.yml cdep-manifest-messaging.yml cdep-manifest-remote_config.yml cdep-manifest-storage.yml
+    - ./cdep
+    - ./cmakeify -wf .cdep/examples/cmake --artifact-id com.github --group-id test-firebase --target-version 0.0.0
+    - git clone https://github.com/jomof/tools
+    - tools/github_release_folder jomof stb .cdep/fullfill/output/layout
 

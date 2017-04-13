@@ -1,0 +1,38 @@
+coordinate:
+  groupId: com.github.jomof
+  artifactId: firebase/messaging
+  version: ${version}
+dependencies:
+  - compile: ${layout}/cdep-manifest-app.yml
+android:
+  archives:
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/c++/libmessaging.a
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/gnustl/libmessaging.a
+  - file: firebase_cpp_sdk/libs/android/arm64-v8a/stlport/libmessaging.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/c++/libmessaging.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/gnustl/libmessaging.a
+  - file: firebase_cpp_sdk/libs/android/armeabi/stlport/libmessaging.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/c++/libmessaging.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/gnustl/libmessaging.a
+  - file: firebase_cpp_sdk/libs/android/armeabi-v7a/stlport/libmessaging.a
+  - file: firebase_cpp_sdk/libs/android/mips64/c++/libmessaging.a
+  - file: firebase_cpp_sdk/libs/android/mips64/gnustl/libmessaging.a
+  - file: firebase_cpp_sdk/libs/android/mips64/stlport/libmessaging.a
+  - file: firebase_cpp_sdk/libs/android/mips/c++/libmessaging.a
+  - file: firebase_cpp_sdk/libs/android/mips/gnustl/libmessaging.a
+  - file: firebase_cpp_sdk/libs/android/mips/stlport/libmessaging.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/c++/libmessaging.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/gnustl/libmessaging.a
+  - file: firebase_cpp_sdk/libs/android/x86_64/stlport/libmessaging.a
+  - file: firebase_cpp_sdk/libs/android/x86/c++/libmessaging.a
+  - file: firebase_cpp_sdk/libs/android/x86/gnustl/libmessaging.a
+  - file: firebase_cpp_sdk/libs/android/x86/stlport/libmessaging.a
+example: |
+  #include "firebase/app.h"
+  #include "firebase/messaging.h"
+  
+  void test() {
+    ::firebase::App * app = ::firebase::App::Create(
+      ::firebase::AppOptions(), NULL /* jni_env */, NULL /* activity */);
+    ::firebase::messaging::Initialize(*app, NULL /* listener */);
+  }

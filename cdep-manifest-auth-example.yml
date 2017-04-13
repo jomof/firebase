@@ -1,9 +1,0 @@
-example: |
-  #include "firebase/app.h"
-  #include "firebase/auth.h"
-  
-  void test() {
-    ::firebase::App * app = ::firebase::App::Create(
-      ::firebase::AppOptions(), NULL /* jni_env */, NULL /* activity */);
-    ::firebase::auth::Auth* auth = ::firebase::auth::Auth::GetAuth(app);
-  }
