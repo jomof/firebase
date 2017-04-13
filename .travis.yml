@@ -3,10 +3,10 @@ matrix:
   - os: linux
     script:
     - wget https://dl.google.com/firebase/sdk/cpp/firebase_cpp_sdk_2.1.3.zip
-    - unzip firebase_cpp_sdk_2.1.3.zip
+    - unzip firebase_cpp_sdk_2.1.3.zip > /tmp/nul
     - ./cdep fullfill firebase_cpp_sdk/ ${TRAVIS_TAG:-0.0.0} cdep-manifest-app.yml cdep-manifest-admob.yml cdep-manifest-analytics.yml cdep-manifest-auth.yml cdep-manifest-database.yml cdep-manifest-invites.yml cdep-manifest-messaging.yml cdep-manifest-remote_config.yml cdep-manifest-storage.yml
     - ./cdep
     - ./cmakeify -wf .cdep/examples/cmake --artifact-id com.github --group-id test-firebase --target-version 0.0.0
     - git clone https://github.com/jomof/tools
-    - tools/github_release_folder jomof stb .cdep/fullfill/output/layout
+    - tools/github_release_folder jomof firebase .cdep/fullfill/output/layout
 
