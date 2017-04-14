@@ -6,6 +6,8 @@ interfaces:
   headers:
     file: ${source}/include/...
     include: include
+    requires:
+    - cxx_auto_type
 android:
   archives:
   - file: firebase_cpp_sdk/libs/android/arm64-v8a/c++/libapp.a
