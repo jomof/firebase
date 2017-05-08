@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/jomof/firebase.svg?branch=master)](https://travis-ci.org/jomof/firebase)
 
 # CDep Packaging of Firebase Libraries
-Include these in your cdep.yml file. More recent versions may be available, check out releases.
+Include these in your cdep.yml file. More recent versions may be available, see releases.
 ```
 - compile: com.github.jomof:firebase/admob:2.1.3-rev22
 - compile: com.github.jomof:firebase/analytics:2.1.3-rev22
